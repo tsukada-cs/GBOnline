@@ -1,7 +1,7 @@
 {
 "companyName": "DefaultCompany",
 "productName": "GBOnline",
-"productVersion": "0.4.0",
+"productVersion": "0.4.1",
 "dataUrl": "GBOnlineWebGL.data.unityweb",
 "wasmCodeUrl": "GBOnlineWebGL.wasm.code.unityweb",
 "wasmFrameworkUrl": "GBOnlineWebGL.wasm.framework.unityweb",
