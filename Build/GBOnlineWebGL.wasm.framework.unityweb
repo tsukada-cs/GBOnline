@@ -1512,7 +1512,7 @@ function _emscripten_asm_const_ii(code, a0) {
  return ASM_CONSTS[code](a0);
 }
 STATIC_BASE = GLOBAL_BASE;
-STATICTOP = STATIC_BASE + 3539136;
+STATICTOP = STATIC_BASE + 3545984;
 __ATINIT__.push({
  func: (function() {
   __GLOBAL__sub_I_Transform_cpp();
@@ -3382,7 +3382,7 @@ __ATINIT__.push({
   ___cxx_global_var_init_188();
  })
 });
-var STATIC_BUMP = 3539136;
+var STATIC_BUMP = 3545984;
 Module["STATIC_BASE"] = STATIC_BASE;
 Module["STATIC_BUMP"] = STATIC_BUMP;
 var tempDoublePtr = STATICTOP;
@@ -15019,6 +15019,11 @@ function nullFunc_iifff(x) {
  err("Build with ASSERTIONS=2 for more info.");
  abort(x);
 }
+function nullFunc_iiffffi(x) {
+ err("Invalid function pointer called with signature 'iiffffi'. Perhaps this is an invalid value (e.g. caused by calling a virtual method on a NULL pointer)? Or calling a function with an incorrect type, which will fail? (it is worth building your source files with -Werror (warnings are errors), as warnings can indicate undefined behavior which can cause this)");
+ err("Build with ASSERTIONS=2 for more info.");
+ abort(x);
+}
 function nullFunc_iifffi(x) {
  err("Invalid function pointer called with signature 'iifffi'. Perhaps this is an invalid value (e.g. caused by calling a virtual method on a NULL pointer)? Or calling a function with an incorrect type, which will fail? (it is worth building your source files with -Werror (warnings are errors), as warnings can indicate undefined behavior which can cause this)");
  err("Build with ASSERTIONS=2 for more info.");
@@ -16099,8 +16104,8 @@ function nullFunc_vjji(x) {
  err("Build with ASSERTIONS=2 for more info.");
  abort(x);
 }
-Module["wasmTableSize"] = 97526;
-Module["wasmMaxTableSize"] = 97526;
+Module["wasmTableSize"] = 97528;
+Module["wasmMaxTableSize"] = 97528;
 function invoke_dd(index, a1) {
  var sp = stackSave();
  try {
@@ -16675,6 +16680,16 @@ function invoke_iifff(index, a1, a2, a3, a4) {
  var sp = stackSave();
  try {
   return Module["dynCall_iifff"](index, a1, a2, a3, a4);
+ } catch (e) {
+  stackRestore(sp);
+  if (typeof e !== "number" && e !== "longjmp") throw e;
+  Module["setThrew"](1, 0);
+ }
+}
+function invoke_iiffffi(index, a1, a2, a3, a4, a5, a6) {
+ var sp = stackSave();
+ try {
+  return Module["dynCall_iiffffi"](index, a1, a2, a3, a4, a5, a6);
  } catch (e) {
   stackRestore(sp);
   if (typeof e !== "number" && e !== "longjmp") throw e;
@@ -18907,6 +18922,7 @@ Module.asmLibraryArg = {
  "nullFunc_iidiii": nullFunc_iidiii,
  "nullFunc_iif": nullFunc_iif,
  "nullFunc_iifff": nullFunc_iifff,
+ "nullFunc_iiffffi": nullFunc_iiffffi,
  "nullFunc_iifffi": nullFunc_iifffi,
  "nullFunc_iiffi": nullFunc_iiffi,
  "nullFunc_iiffiii": nullFunc_iiffiii,
@@ -19181,6 +19197,7 @@ Module.asmLibraryArg = {
  "invoke_iidiii": invoke_iidiii,
  "invoke_iif": invoke_iif,
  "invoke_iifff": invoke_iifff,
+ "invoke_iiffffi": invoke_iiffffi,
  "invoke_iifffi": invoke_iifffi,
  "invoke_iiffi": invoke_iiffi,
  "invoke_iiffiii": invoke_iiffiii,
@@ -25771,6 +25788,11 @@ var dynCall_iifff = Module["dynCall_iifff"] = (function() {
  assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
  assert(!runtimeExited, "the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)");
  return Module["asm"]["dynCall_iifff"].apply(null, arguments);
+});
+var dynCall_iiffffi = Module["dynCall_iiffffi"] = (function() {
+ assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
+ assert(!runtimeExited, "the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)");
+ return Module["asm"]["dynCall_iiffffi"].apply(null, arguments);
 });
 var dynCall_iifffi = Module["dynCall_iifffi"] = (function() {
  assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
