@@ -1,7 +1,7 @@
 {
 "companyName": "DefaultCompany",
 "productName": "GBOnline",
-"productVersion": "0.1",
+"productVersion": "0.4.5",
 "dataUrl": "GBOnline.data.unityweb",
 "wasmCodeUrl": "GBOnline.wasm.code.unityweb",
 "wasmFrameworkUrl": "GBOnline.wasm.framework.unityweb",
@@ -10,7 +10,7 @@
 "splashScreenStyle": "Dark",
 "backgroundColor": "#231F20",
 "cacheControl": {"default": "must-revalidate"},
-"developmentBuild": false,
+"developmentBuild": true,
 "multithreading": false,
 "unityVersion": "2019.3.3f1"
 }
